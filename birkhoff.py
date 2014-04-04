@@ -3,7 +3,7 @@ import numpy as np
 from scipy import integrate
 from math import *
 
-MAXN = 1000
+MAXN = 10
 
 def next_iterate(f, ts, domain, prev, n):
     fn = []
@@ -23,7 +23,7 @@ def plot(alpha, f):
     domain = list(np.linspace(0.0, 1.0, 1000))
     F = lambda x: eval(f)
     int_F = integrate.quad(F, 0.0, 1.0)[0]
-    plt.plot(domain, [int_F] * len(domain))
+    plt.plot(domain, [int_F] * len(domain), label='f')
     fns = [[F(x) for x in domain]]
     ts = [domain]
     for n in range(1, MAXN):
@@ -31,8 +31,8 @@ def plot(alpha, f):
         fns.append(next_iterate(F, ts[n], domain, fns[-1], n))
     #    fns.append(next_iterate(F, rotation, domain, fns[-1], n))
     #fns = [[get_sums(F, rotation, x, n) for x in domain] for n in range(1, MAXN)]
-    for fn in fns:
-        plt.plot(domain, fn)
+    for index, fn in enumerate(fns):
+        plt.plot(domain, fn, label='f'+str(index))
     plt.show()
 
 if __name__ == "__main__":
