@@ -37,5 +37,5 @@ def plot(alpha, f):
 
 if __name__ == "__main__":
     alpha = float(input("Enter a rotation value:")) % 1
-    f = input("Please enter an L^1 function. (Currently supports polynomials of 1 variable).")
+    f = input("Please enter an L^1 function. (Currently supports polynomials and basic trig functions of 1 variable).")
     plot(alpha, f)
